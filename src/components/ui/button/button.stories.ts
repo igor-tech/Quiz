@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from 'src/components/ui/button/index'
+import { Button } from './button'
 
 const meta = {
   argTypes: {
@@ -11,7 +11,7 @@ const meta = {
   },
   component: Button,
   tags: ['autodocs'],
-  title: 'Components/Button',
+  title: 'Components/UI/Button',
 } satisfies Meta<typeof Button>
 
 export default meta
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
+    children: 'Button primary',
     disabled: false,
     variant: 'primary',
   },
@@ -27,9 +27,36 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary Button',
+    children: 'Button Secondary',
     disabled: false,
     variant: 'secondary',
+  },
+}
+
+export const PrimaryDisabled: Story = {
+  args: {
+    children: 'Button primary',
+    disabled: true,
+    variant: 'primary',
+  },
+}
+
+export const SecondaryDisabled: Story = {
+  args: {
+    children: 'Button Secondary',
+    disabled: true,
+    variant: 'secondary',
+  },
+}
+
+export const Link: Story = {
+  args: {
+    as: 'a',
+    children: 'Sign Up',
+    disabled: false,
+    href: 'https://www.google.com/',
+    target: '_blank',
+    variant: 'link',
   },
 }
 

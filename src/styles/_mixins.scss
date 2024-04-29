@@ -1,0 +1,98 @@
+@mixin flex(
+  $direction: row,
+  $rowGap: 0,
+  $colGap: 0,
+  $align-items: flex-start,
+  $justify-content: flex-start
+) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $rowGap $colGap;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+// Миксин для текучего текста, 1440 - максимальная ширина экрана макета
+@mixin fluid-text($max: 48, $min: 16) {
+  font-size: clamp(#{$min}px, #{$max / 1440 * 100}vw, #{$max}px);
+}
+
+// Миксин для обнуления ссылок
+@mixin reset-link {
+  color: inherit;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Миксин для центрирования с помощью flex
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  }
+
+ @else {
+    display: flex;
+  }
+
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin reset-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+// Миксин для центрирования с помощью position
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+// Миксин для установки относительных размеров
+@mixin square($size) {
+  aspect-ratio: 1;
+  width: $size;
+}
+
+// Миксин для hover, чтобы корректно работало на мобильных устройствах
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}
+
+@mixin container($width, $padding-inline: 12px) {
+  box-sizing: content-box;
+  max-width: $width;
+  margin: 0 auto;
+  padding-inline: $padding-inline;
+}
+
+@mixin typography-mixin($fS, $lH, $fW) {
+  font-family: var(--font-family-primary);
+  font-size: $fS;
+  font-weight: $fW;
+  line-height: $lH;
+  color: var(--color-light-100);
+  white-space: pre-line;
+}
+
+@mixin link {
+  color: var(--color-info-500);
+  text-decoration-line: underline;
+}
