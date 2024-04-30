@@ -31,9 +31,7 @@
 @mixin flex-center($isInline: false) {
   @if $isInline {
     display: inline-flex;
-  }
-
- @else {
+  } @else {
     display: flex;
   }
 
@@ -83,7 +81,9 @@
   padding-inline: $padding-inline;
 }
 
-@mixin typography-mixin($fS, $lH, $fW) {
+@mixin typography($fS, $lH, $fW) {
+  margin: 0;
+
   font-family: var(--font-family-primary);
   font-size: $fS;
   font-weight: $fW;
@@ -93,6 +93,7 @@
 }
 
 @mixin link {
+  cursor: pointer;
   color: var(--color-info-500);
   text-decoration-line: underline;
 }
