@@ -1,3 +1,5 @@
+import { ForwardedRef, forwardRef } from 'react'
+
 import { Check } from '@/assets/icons/components/Check'
 import { Typography } from '@/components/ui/typography'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
@@ -15,7 +17,7 @@ export type CheckboxProps = {
   required?: boolean
 }
 
-export const Checkbox = (props: CheckboxProps) => {
+export const Checkbox = forwardRef((props: CheckboxProps, ref: ForwardedRef<HTMLButtonElement>) => {
   const { checked, className, disabled, label, onChange, ...rest } = props
 
   const classNames = {
@@ -30,6 +32,7 @@ export const Checkbox = (props: CheckboxProps) => {
         disabled={disabled}
         onCheckedChange={onChange}
         {...rest}
+        ref={ref}
       >
         <div className={styles.frame}></div>
         {checked && (
@@ -41,4 +44,4 @@ export const Checkbox = (props: CheckboxProps) => {
       {label}
     </Typography>
   )
-}
+})
