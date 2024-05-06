@@ -97,3 +97,39 @@
   color: var(--color-info-500);
   text-decoration-line: underline;
 }
+
+@mixin interactive-circle-element($size) {
+  &::before,
+  &::after {
+    @include abs-center;
+
+    @include square($size);
+
+    content: '';
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+}
+
+@mixin interactive-circle($active-color, $hover-color: --color-dark-500, $size: 36px) {
+  @include interactive-circle-element($size);
+
+  &:focus-visible::before {
+    background-color: var($hover-color);
+  }
+
+  &:hover::before {
+    background-color: var($hover-color);
+  }
+
+  &:active::after {
+    background-color: var($active-color);
+    transition: 0s;
+  }
+
+  &:disabled::before,
+  &:disabled::after {
+    width: 0;
+    height: 0;
+  }
+}
