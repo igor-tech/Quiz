@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, KeyboardEvent, forwardRef, useState } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { Close } from '@/assets/icons/components/Close'
 import { Eye } from '@/assets/icons/components/Eye'
@@ -11,26 +11,19 @@ import { clsx } from 'clsx'
 import s from './TextField.module.scss'
 
 type InputType = 'password' | 'search' | 'text'
+
 type Props = {
+  clearField?: () => void
   error?: string
   label?: string
-  onClearClick?: () => void
-  onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void
   type?: InputType
   value?: string
 } & ComponentPropsWithoutRef<'input'>
+
 export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
-  (
-    { disabled, error, id, label, onClearClick, onEnter, onKeyDown, type = 'text', ...restProps },
-    ref
-  ) => {
+  ({ clearField, disabled, error, id, label, type = 'text', ...restProps }, ref) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (onEnter && e.key === 'Enter') {
-        onEnter(e)
-      }
-      onKeyDown?.(e)
-    }
+
     const classNames = {
       clearButton: clsx(s.clearButton, disabled && s.buttonDisabled),
       container: s.textFieldWrapper,
@@ -49,18 +42,20 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
     }
     const inputId = useGetId(id)
 
-    const isShowClearButton = type === 'search' && onClearClick && restProps?.value?.length! > 0
+    const isSearchType = type === 'search'
+    const isPasswordType = type === 'password'
+
+    const isShowClearButton = isSearchType && clearField && restProps?.value?.length! > 0
 
     const finalType = (variant: InputType, showPassword: boolean): InputType => {
-      if (variant === 'password' && showPassword) {
-        return 'text'
-      } else if (variant === 'password' && !showPassword) {
-        return 'password'
+      if (variant === 'password') {
+        return showPassword ? 'text' : 'password'
       }
 
       return 'text'
     }
-    const togglerInputType = () => {
+
+    const onShowPasswordToggler = () => {
       setIsShowPassword(prevValue => !prevValue)
     }
 
@@ -78,21 +73,20 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
             className={classNames.input}
             disabled={disabled}
             id={inputId}
-            onKeyDown={handleKeyDown}
             type={finalType(type, isShowPassword)}
             {...restProps}
             ref={ref}
           />
-          {type === 'search' && (
+          {isSearchType && (
             <button className={classNames.searchButton} disabled={disabled}>
               {<Search disabled={disabled} size={20} />}
             </button>
           )}
-          {type === 'password' && (
+          {isPasswordType && (
             <button
               className={classNames.passwordButton}
               disabled={disabled}
-              onClick={togglerInputType}
+              onClick={onShowPasswordToggler}
             >
               {isShowPassword ? (
                 <EyeOff disabled={disabled} size={20} />
@@ -102,12 +96,12 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
             </button>
           )}
           {isShowClearButton && !error && (
-            <button className={classNames.clearButton} onClick={onClearClick}>
+            <button className={classNames.clearButton} onClick={clearField}>
               <Close color={'currentColor'} disabled={disabled} size={16} />
             </button>
           )}
         </div>
-        {error && (
+        {!!error && (
           <span className={classNames.error}>
             <Typography className={classNames.errorCaption} variant={'caption'}>
               {error}

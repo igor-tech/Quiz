@@ -51,13 +51,13 @@ export const Error: Story = {
     return (
       <>
         <TextField
+          clearField={() => setValue('')}
           error={error}
           label={args.label}
           onChange={e => {
             setValue(e.currentTarget.value)
             setError('')
           }}
-          onClearClick={() => setValue('')}
           placeholder={args.placeholder}
           type={args.type}
           value={value}
