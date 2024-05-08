@@ -5,6 +5,7 @@ import { LogOut } from '@/assets/icons/components/LogOut'
 import { PlayCircle } from '@/assets/icons/components/PlayCircle'
 import { Profile } from '@/assets/icons/components/Profile'
 import { Trash } from '@/assets/icons/components/Trash'
+import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
 import {
@@ -59,15 +60,9 @@ export const HeaderProfile: Story = {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button style={{ all: 'unset', cursor: 'pointer' }}>
-            <img
-              alt={''}
-              height={36}
-              src={'https://freelance.ru/img/portfolio/pics/00/36/88/3573970.jpg'}
-              style={{ borderRadius: '50%' }}
-              width={36}
-            />
-          </button>
+          <Button style={{ all: 'unset', cursor: 'pointer' }}>
+            <Avatar />
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropDownMenuItem></DropDownMenuItem>
