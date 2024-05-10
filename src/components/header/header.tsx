@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import { LogOut } from '@/assets/icons/components/LogOut'
-import { Logo } from '@/assets/icons/components/Logo'
-import { Profile } from '@/assets/icons/components/Profile'
+import { Logo } from '@/assets/icons/components/logo'
+import { Logout } from '@/assets/icons/components/logout'
+import { Profile } from '@/assets/icons/components/profile'
 import { PATHS } from '@/common/constants/path'
 import { ProfileInfo, ProfileInfoProps } from '@/components/header/profile-info'
 import { Avatar } from '@/components/ui/avatar'
@@ -45,7 +45,7 @@ export const Header = ({ isAuth, user }: HeaderProps) => {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant={'link'}>
+                <Button className={styles.trigger} variant={'link'}>
                   <Avatar />
                 </Button>
               </DropdownMenuTrigger>
@@ -63,7 +63,7 @@ export const Header = ({ isAuth, user }: HeaderProps) => {
                 </DropDownMenuItem>
                 <DropdownMenuSeparator />
                 <DropDownMenuItem>
-                  <LogOut /> Sign Out
+                  <Logout /> Sign Out
                 </DropDownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

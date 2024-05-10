@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Edit } from '@/assets/icons/components/Edit'
-import { More } from '@/assets/icons/components/More'
+import { Edit } from '@/assets/icons/components/edit'
+import { More } from '@/assets/icons/components/more'
 import { IconButton } from '@/components/ui/icon-button/icon-button'
 
 const meta = {
@@ -15,20 +15,20 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    Icon: <More />,
+    children: <More />,
   },
 }
 
 export const Small: Story = {
   args: {
-    Icon: <Edit />,
+    children: <Edit />,
     variant: 'small',
   },
 }
 
 export const Disabled: Story = {
   args: {
-    Icon: <Edit />,
+    children: <Edit />,
     disabled: true,
   },
 }
