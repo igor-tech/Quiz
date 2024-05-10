@@ -21,11 +21,13 @@
     }
 
     .user {
+      cursor: pointer;
       display: flex;
       column-gap: 14px;
       align-items: center;
 
       .name {
+        cursor: auto;
         text-decoration: none;
         border-bottom: 1px dashed var(--color-light-100);
       }

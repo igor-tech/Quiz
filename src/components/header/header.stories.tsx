@@ -17,11 +17,13 @@ type Story = StoryObj<typeof meta>
 export const Authorized: Story = {
   args: {
     isAuth: true,
+    user: null,
   },
 }
 
 export const Unauthorized: Story = {
   args: {
     isAuth: false,
+    user: null,
   },
 }

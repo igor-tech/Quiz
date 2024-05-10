@@ -1,17 +1,26 @@
 import { Link } from 'react-router-dom'
 
+import { LogOut } from '@/assets/icons/components/LogOut'
 import { Logo } from '@/assets/icons/components/Logo'
+import { Profile } from '@/assets/icons/components/Profile'
 import { PATHS } from '@/common/constants/path'
-import { ProfileInfoProps } from '@/components/header/profile-info'
+import { ProfileInfo, ProfileInfoProps } from '@/components/header/profile-info'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
+import {
+  DropDownMenuItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/drop-down'
 import { Typography } from '@/components/ui/typography'
 
 import styles from './header.module.scss'
 
 type HeaderProps = {
   isAuth: boolean
-  user?: ProfileInfoProps | null
+  user: ProfileInfoProps | null
 }
 
 export const Header = ({ isAuth, user }: HeaderProps) => {
@@ -34,7 +43,30 @@ export const Header = ({ isAuth, user }: HeaderProps) => {
               {user?.name || 'Ivan'}
             </Typography>
 
-            <Avatar />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant={'link'}>
+                  <Avatar />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropDownMenuItem>
+                  <ProfileInfo
+                    avatar={user?.avatar || ''}
+                    email={user?.email || 'j&johnson@gmail.com'}
+                    name={user?.name || 'Ivan'}
+                  />
+                </DropDownMenuItem>
+                <DropdownMenuSeparator />
+                <DropDownMenuItem>
+                  <Profile /> My Profile
+                </DropDownMenuItem>
+                <DropdownMenuSeparator />
+                <DropDownMenuItem>
+                  <LogOut /> Sign Out
+                </DropDownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         )}
       </div>
