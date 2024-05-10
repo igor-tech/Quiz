@@ -16,8 +16,3 @@ export const Primary: Story = {
     children: 'Card primary',
   },
 }
-export const WithButton: Story = {
-  args: {
-    children: <button>Hello</button>,
-  },
-}
