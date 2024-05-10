@@ -1,0 +1,36 @@
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-500);
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: var(--max-width);
+    height: 100%;
+    margin-inline: auto;
+    padding-inline: 15px;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .user {
+      cursor: pointer;
+      display: flex;
+      column-gap: 14px;
+      align-items: center;
+
+      .name {
+        cursor: auto;
+        text-decoration: none;
+        border-bottom: 1px dashed var(--color-light-100);
+      }
+    }
+  }
+}

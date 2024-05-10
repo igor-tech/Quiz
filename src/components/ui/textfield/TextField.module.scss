@@ -1,0 +1,120 @@
+.textFieldWrapper {
+  position: relative;
+  margin: 20px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.input {
+  width: 284px;
+  padding: 6px 12px;
+
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+  outline: none;
+
+  transition: border 0.3s;
+
+  &::placeholder {
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
+  }
+
+  &:focus {
+    border-color: var(--color-info-700);
+  }
+
+  &:active {
+    border-color: var(--color-light-100);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    color: var(--color-dark-300);
+
+    &::placeholder {
+      color: var(--color-dark-300);
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-dark-700);
+  }
+}
+
+.passwordInput {
+  padding: 6px 45px 6px 12px;
+}
+
+.searchInput {
+  padding: 6px 35px 6px 40px;
+}
+
+.labelWrapper {
+  color: var(--color-dark-100);
+
+  &:has(+ input:disabled) {
+    color: var(--color-dark-300);
+  }
+}
+
+.buttonDisabled {
+  pointer-events: none;
+  border: 1px solid red;
+}
+
+.errorInput {
+  color: var(--color-danger-300);
+  border: 1px solid var(--color-danger-300);
+
+  &::placeholder {
+    color: var(--color-danger-300);
+  }
+}
+
+.errorWrapper {
+  position: absolute;
+  bottom: -25px;
+  left: 1px;
+}
+
+.errorCaption {
+  color: var(--color-danger-300);
+}
+
+@mixin icon-button {
+  cursor: pointer;
+
+  position: absolute;
+
+  padding: 0;
+
+  background: none;
+  border: none;
+}
+
+.passwordButton {
+  @include icon-button;
+
+  right: 10px;
+  bottom: 2px;
+}
+
+.searchButton {
+  @include icon-button;
+
+  pointer-events: none;
+  bottom: 3px;
+  left: 12px;
+}
+
+.clearButton {
+  @include icon-button;
+
+  right: 8px;
+  bottom: 4px;
+}
