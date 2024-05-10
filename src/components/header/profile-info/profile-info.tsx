@@ -6,9 +6,9 @@ import { Typography } from '@/components/ui/typography'
 import styles from './profile-info.module.scss'
 
 export type ProfileInfoProps = {
-  avatar?: string
-  email?: string
-  name?: string
+  avatar: string
+  email: string
+  name: string
 }
 
 export const ProfileInfo = forwardRef<ElementRef<'div'>, ProfileInfoProps>(
@@ -17,9 +17,9 @@ export const ProfileInfo = forwardRef<ElementRef<'div'>, ProfileInfoProps>(
       <div className={styles.wrapper} ref={ref}>
         <Avatar src={avatar} />
         <div className={styles.info}>
-          <Typography variant={'subtitle2'}>{name || 'Ivan'}</Typography>
+          <Typography variant={'subtitle2'}>{name}</Typography>
           <Typography className={styles.email} variant={'caption'}>
-            {email || 'j&johnson@gmail.com'}
+            {email}
           </Typography>
         </div>
       </div>
