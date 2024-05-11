@@ -1,12 +1,12 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
-import { Close } from '@/assets/icons/components/Close'
+import { Close } from '@/assets/icons/components/close'
 import { Typography } from '@/components/ui/typography'
 import * as Dialog from '@radix-ui/react-dialog'
 
 import style from './modal.module.scss'
 
-type ModalProps = {
+export type ModalProps = {
   children: ReactNode
   onOpenChange: (open: boolean) => void
   open: boolean
