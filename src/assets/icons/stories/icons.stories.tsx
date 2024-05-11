@@ -25,7 +25,7 @@ import styles from './icons.module.scss'
 const meta = {
   component: IconButton,
   tags: ['autodocs'],
-  title: 'Components/Icons/All icons',
+  title: 'Icons/All icons',
 } satisfies Meta<typeof IconButton>
 
 export default meta
