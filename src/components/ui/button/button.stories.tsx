@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Logout } from '@/assets/icons/components/logout'
+
 import { Button } from './button'
 
 const meta = {
@@ -57,6 +59,18 @@ export const Link: Story = {
     href: 'https://www.google.com/',
     target: '_blank',
     variant: 'link',
+  },
+}
+
+export const WidthIcon: Story = {
+  args: {
+    children: (
+      <>
+        <Logout /> Log out
+      </>
+    ),
+    disabled: false,
+    variant: 'primary',
   },
 }
 

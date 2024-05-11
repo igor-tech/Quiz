@@ -1,9 +1,9 @@
 import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
-import { Close } from '@/assets/icons/components/Close'
-import { Eye } from '@/assets/icons/components/Eye'
-import { EyeOff } from '@/assets/icons/components/EyeOff'
-import { Search } from '@/assets/icons/components/Search'
+import { Close } from '@/assets/icons/components/close'
+import { Eye } from '@/assets/icons/components/eye'
+import { EyeOff } from '@/assets/icons/components/eye-off'
+import { Search } from '@/assets/icons/components/search'
 import { useGetId } from '@/components/ui/textfield/useGetId'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
@@ -79,7 +79,7 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
           />
           {isSearchType && (
             <button className={classNames.searchButton} disabled={disabled}>
-              {<Search disabled={disabled} size={20} />}
+              {<Search />}
             </button>
           )}
           {isPasswordType && (
@@ -88,16 +88,12 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
               disabled={disabled}
               onClick={onShowPasswordToggler}
             >
-              {isShowPassword ? (
-                <EyeOff disabled={disabled} size={20} />
-              ) : (
-                <Eye disabled={disabled} size={20} />
-              )}
+              {isShowPassword ? <EyeOff /> : <Eye />}
             </button>
           )}
           {isShowClearButton && !error && (
             <button className={classNames.clearButton} onClick={clearField}>
-              <Close color={'currentColor'} disabled={disabled} size={16} />
+              <Close color={'currentColor'} />
             </button>
           )}
         </div>
