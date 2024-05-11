@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Edit } from '@/assets/icons/components/Edit'
-import { LogOut } from '@/assets/icons/components/LogOut'
-import { More } from '@/assets/icons/components/More'
-import { PlayCircle } from '@/assets/icons/components/PlayCircle'
-import { Profile } from '@/assets/icons/components/Profile'
-import { Trash } from '@/assets/icons/components/Trash'
+import { Edit } from '@/assets/icons/components/edit'
+import { Logout } from '@/assets/icons/components/logout'
+import { More } from '@/assets/icons/components/more'
+import { PlayCircle } from '@/assets/icons/components/play-circle'
+import { Profile } from '@/assets/icons/components/profile'
+import { Trash } from '@/assets/icons/components/trash'
 import { ProfileInfo } from '@/components/header'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -34,9 +34,9 @@ export const Default: Story = {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant={'link'}>
-            <IconButton Icon={<More />} />
-          </Button>
+          <IconButton>
+            <More />
+          </IconButton>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropDownMenuItem>
@@ -80,7 +80,7 @@ export const HeaderProfile: Story = {
           </DropDownMenuItem>
           <DropdownMenuSeparator />
           <DropDownMenuItem>
-            <LogOut />
+            <Logout />
             Sign Out
           </DropDownMenuItem>
         </DropdownMenuContent>

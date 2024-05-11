@@ -29,4 +29,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export const LogOut = memo(SvgComponent)
+export const Logout = memo(SvgComponent)

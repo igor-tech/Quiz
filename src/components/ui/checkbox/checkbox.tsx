@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 
-import { Check } from '@/assets/icons/components/Check'
+import { Check } from '@/assets/icons/components/check'
 import { Typography } from '@/components/ui/typography'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import { clsx } from 'clsx'
