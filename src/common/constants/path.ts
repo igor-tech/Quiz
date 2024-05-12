@@ -1,11 +1,11 @@
 export const PATHS = {
   CARDS: '/cards',
   CHECK_EMAIL: '/check-email',
+  DECKS: '/',
   ERROR: '/404',
   ID: '/:id',
   LEARN: '/learn',
   NEW_PASSWORD: '/new-password/:token',
-  PACKS: '/packs',
   PASSWORD_RECOVERY: '/password-recovery',
   PROFILE: '/profile',
   SIGN_IN: '/sign-in',
