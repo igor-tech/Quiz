@@ -12,15 +12,14 @@ import s from './TextField.module.scss'
 
 type InputType = 'password' | 'search' | 'text'
 
-type Props = {
+export type TextFieldProps = {
   clearField?: () => void
   error?: string
   label?: string
   type?: InputType
-  value?: string
 } & ComponentPropsWithoutRef<'input'>
 
-export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
+export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldProps>(
   ({ clearField, disabled, error, id, label, type = 'text', ...restProps }, ref) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
@@ -40,22 +39,17 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
       passwordButton: clsx(s.passwordButton, disabled && s.buttonDisabled),
       searchButton: clsx(s.searchButton, disabled && s.buttonDisabled),
     }
+
     const inputId = useGetId(id)
 
     const isSearchType = type === 'search'
     const isPasswordType = type === 'password'
 
-    const isShowClearButton = isSearchType && clearField && restProps?.value?.length! > 0
+    const isShowClearButton = isSearchType && clearField && restProps?.value
 
-    const finalType = (variant: InputType, showPassword: boolean): InputType => {
-      if (variant === 'password') {
-        return showPassword ? 'text' : 'password'
-      }
+    const finalType = type === 'password' && !isShowPassword ? 'password' : 'text'
 
-      return 'text'
-    }
-
-    const onShowPasswordToggler = () => {
+    const onShowPasswordToggle = () => {
       setIsShowPassword(prevValue => !prevValue)
     }
 
@@ -68,35 +62,41 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, Props>(
             </label>
           </div>
         )}
+
         <div className={classNames.inputWrapper}>
           <input
             className={classNames.input}
             disabled={disabled}
             id={inputId}
-            type={finalType(type, isShowPassword)}
+            type={finalType}
             {...restProps}
             ref={ref}
           />
+
           {isSearchType && (
-            <button className={classNames.searchButton} disabled={disabled}>
+            <button className={classNames.searchButton} disabled={disabled} type={'button'}>
               {<Search />}
             </button>
           )}
+
           {isPasswordType && (
             <button
               className={classNames.passwordButton}
               disabled={disabled}
-              onClick={onShowPasswordToggler}
+              onClick={onShowPasswordToggle}
+              type={'button'}
             >
               {isShowPassword ? <EyeOff /> : <Eye />}
             </button>
           )}
+
           {isShowClearButton && !error && (
-            <button className={classNames.clearButton} onClick={clearField}>
+            <button className={classNames.clearButton} onClick={clearField} type={'button'}>
               <Close color={'currentColor'} />
             </button>
           )}
         </div>
+
         {!!error && (
           <span className={classNames.error}>
             <Typography className={classNames.errorCaption} variant={'caption'}>

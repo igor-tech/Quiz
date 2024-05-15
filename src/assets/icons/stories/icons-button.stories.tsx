@@ -10,7 +10,7 @@ import { Typography } from '@/components/ui/typography'
 const meta = {
   component: IconButton,
   tags: ['autodocs'],
-  title: 'Components/Icons/Icons Button',
+  title: 'Icons/Icons Buttons',
 } satisfies Meta<typeof IconButton>
 
 export default meta

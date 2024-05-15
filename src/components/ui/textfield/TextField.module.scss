@@ -1,6 +1,7 @@
+@import 'src/styles/mixins';
+
 .textFieldWrapper {
   position: relative;
-  margin: 20px;
 }
 
 .inputWrapper {
@@ -51,7 +52,7 @@
 }
 
 .searchInput {
-  padding: 6px 35px 6px 40px;
+  padding: 6px 25px 6px 40px;
 }
 
 .labelWrapper {
@@ -95,6 +96,12 @@
 
   background: none;
   border: none;
+
+  transition-duration: 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .passwordButton {
@@ -110,6 +117,11 @@
   pointer-events: none;
   bottom: 3px;
   left: 12px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .clearButton {
@@ -117,4 +129,9 @@
 
   right: 8px;
   bottom: 4px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
