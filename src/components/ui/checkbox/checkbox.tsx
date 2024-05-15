@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Check } from '@/assets/icons/components/check'
 import { Typography } from '@/components/ui/typography'
@@ -8,17 +8,11 @@ import { clsx } from 'clsx'
 import styles from './checkbox.module.scss'
 
 export type CheckboxProps = {
-  checked?: boolean
-  className?: string
-  disabled?: boolean
-  id?: string
   label?: string
-  onChange?: (checked: boolean) => void
-  required?: boolean
-}
+} & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
-export const Checkbox = forwardRef((props: CheckboxProps, ref: ForwardedRef<HTMLButtonElement>) => {
-  const { checked, className, disabled, label, onChange, ...rest } = props
+export const Checkbox = forwardRef<ElementRef<'button'>, CheckboxProps>((props, ref) => {
+  const { checked, className, disabled, label, ...rest } = props
 
   const classNames = {
     checkbox: styles.checkbox,
@@ -27,13 +21,7 @@ export const Checkbox = forwardRef((props: CheckboxProps, ref: ForwardedRef<HTML
 
   return (
     <Typography as={'label'} className={classNames.root}>
-      <CheckboxRadix.Root
-        className={classNames.checkbox}
-        disabled={disabled}
-        onCheckedChange={onChange}
-        {...rest}
-        ref={ref}
-      >
+      <CheckboxRadix.Root className={classNames.checkbox} disabled={disabled} {...rest} ref={ref}>
         <div className={styles.frame}></div>
         {checked && (
           <CheckboxRadix.Indicator className={styles.indicator} forceMount>
